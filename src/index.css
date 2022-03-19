@@ -1,13 +1,61 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+*{
+    box-sizing: border-box;
+}
+#root{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+.Add-task{
+    height: 10vh;
+    text-transform: uppercase;
+     color: rgb(52, 82, 182);
+     font-size: 3rem;
+
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+.List{
+    display: flex;
+}
+.todo{
+    padding: 2rem;
+    font-size: 2rem;
+    height: 90vh;
+    width: 50%;
+    border: 1px solid red;
+}
+.finished{
+    text-transform: uppercase;
+    padding: 2rem;
+    font-size: 2rem;
+    height: 90vh;
+    width: 50%;
+    border: 1px solid red;
+}
+.Add-task form {
+    /* border: 2px solid red; */
+    /* margin: auto px; */
+    padding: 10rem;
+}
+.Add-task form input[type="button"]
+{
+    /* background-color: red; */
+    padding: 1rem;
+    border-radius: 12px;
+    margin: 10px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.Add-task form input[type="text"]{
+    font-size: 14px;
+    padding: 1rem;
+    border-radius: 10px;
 }
+/* sir outlined word hata do icon lag jaega */
