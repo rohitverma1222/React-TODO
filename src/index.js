@@ -18,7 +18,7 @@ class Addtask extends React.Component {
 
     }
     handleAddTaskClick() {
-        if (this.state.taskDesc.length > 0) {
+        if (this.state.taskDesc.length > 0 && this.state.taskDesc.length < 20) {
             this.props.handlertoCollectTaskInfo(this.state.taskDesc);
         }
         this.setState({
@@ -28,6 +28,9 @@ class Addtask extends React.Component {
     render() {
         return (
             <>
+            <h2>
+                Todo-App
+            </h2>
                 <form>
                     <input type="text" value={this.state.taskDesc} onChange={(e) => this.handleTaskTextChange(e)} />
                     <input type="button" value="Add task" onClick={() => this.handleAddTaskClick()} />
@@ -43,6 +46,10 @@ class List extends React.Component {
     handleOperationChange(task) {
         this.props.handlertoCollectTaskInfo(task);
     }
+    deletetask(task)
+    {
+        this.props.deletetaskFromState(task);
+    }
     render() {
         let list = [];
 
@@ -51,20 +58,21 @@ class List extends React.Component {
             let spanAction;
             if (tasks.isfinished) {
                 spanAction = (
-                    <span class="material-icons" onClick={() => this.handleOperationChange(tasks.desc)}>close</span>
+                    <span class="material-icons icons" onClick={() => this.handleOperationChange(tasks.desc)}>close</span>
                 );
             }
             else {
                 spanAction = (
-                    <span class="material-icons" onClick={() => {
-                        this.handleOperationChange(tasks.desc)
-                        console.log("he")
-                    }}>done</span>
+                    <>
+                        <span class="material-icons icons" onClick={() => this.handleOperationChange(tasks.desc)}>done</span>
+                        <span class="material-icons icons" onClick={() => this.deletetask(tasks.desc)}>delete</span>
+                    </>
+
                 );
             }
             let listItem = (
-                <div key={i}>
-                    <span>{tasks.desc}</span>
+                <div key={i} className="task">
+                    <span className='task-desc'>{tasks.desc}</span>
                     {spanAction}
                 </div>
             );
@@ -73,6 +81,7 @@ class List extends React.Component {
         return (
             <div className={this.props.forstyling}>
                 <div className='title'>{this.props.purpose}</div>
+                <hr />
                 <div className='content'>
                     {list}
                 </div>
@@ -85,20 +94,7 @@ class App extends React.Component {
         super(props)
 
         this.state = {
-            tasks: [{
-                desc: 'Switch off lights',
-                isfinished: true,
-            }, {
-                desc: 'Revise Class',
-                isfinished: false,
-            },
-            {
-                desc: 'Play game',
-                isfinished: true,
-            }, {
-                desc: 'Make Dinner',
-                isfinished: false,
-            }]
+            tasks: [{}]
         }
     }
     handleNewTask(taskDesc) {
@@ -114,11 +110,20 @@ class App extends React.Component {
     handleSwapOperation(task, status) {
         let oldtasks = this.state.tasks.slice();
 
-        let Item = oldtasks.find(ot => ot.desc == task)
+        let Item = oldtasks.find(ot => ot.desc === task)
         Item.isfinished = status;
 
         this.setState({
             tasks: oldtasks
+        });
+    }
+    deletetaskInState(task)
+    {
+        let oldtasks=this.state.tasks.slice();
+
+        let newtask=oldtasks.filter(ot=>ot.desc!==task)
+        this.setState({
+            tasks:newtask
         });
     }
     render() {
@@ -132,8 +137,8 @@ class App extends React.Component {
                     <Addtask handlertoCollectTaskInfo={(taskDesc) => this.handleNewTask(taskDesc)} />
                 </div>
                 <div className='List'>
-                    <List tasks={todoTask} handlertoCollectTaskInfo={(task) => this.handleSwapOperation(task, true)} purpose="todo" forstyling="todo" />
-                    <List tasks={finishedtask} handlertoCollectTaskInfo={(task) => this.handleSwapOperation(task, false)} purpose="finished" forstyling="finished" />
+                    <List tasks={todoTask} deletetaskFromState ={(task)=> this.deletetaskInState(task)} handlertoCollectTaskInfo={(task) => this.handleSwapOperation(task, true)} purpose="todo" forstyling="todo" />
+                    <List tasks={finishedtask}  handlertoCollectTaskInfo={(task) => this.handleSwapOperation(task, false)} purpose="finished" forstyling="finished" />
                 </div>
             </>
         )

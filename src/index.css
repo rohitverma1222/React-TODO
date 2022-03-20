@@ -1,10 +1,21 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;1,200;1,300;1,400&display=swap');
+
 body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 *{
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+h2{
+    width: 30%;
+    text-align: start;
+    margin-left: -30%;
+    color: #85F4FF;
 }
 #root{
     height: 100vh;
@@ -15,7 +26,7 @@ body{
 .Add-task{
     height: 10vh;
     text-transform: uppercase;
-     color: rgb(52, 82, 182);
+     color: rgb(52, 182, 95);
      font-size: 3rem;
 
      display: flex;
@@ -23,27 +34,58 @@ body{
      align-items: center;
 }
 .List{
+    /* border: 1px solid black; */
+    border-radius: 0rem 10rem 0rem 10rem ;
+    background-color: aliceblue;
+    /* border: 4px solid rgb(211, 228, 243); */
+    height: 90vh;
     display: flex;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top:1rem ;
+    margin-bottom: 2px;
+    justify-content: space-around;
+    align-items: center;
+}
+.title{
+    text-align: center;
+    margin-bottom: 1rem;
+    width: 100%;
+    background-color: aliceblue;
+    border-radius: 0rem 20rem 0rem 10rem;
 }
 .todo{
     padding: 2rem;
+    background-color: #B8FFF9;
     font-size: 2rem;
-    height: 90vh;
-    width: 50%;
-    border: 1px solid red;
+    height: 75%;
+    width: 30%;
+    text-transform: uppercase;
+    /* text-align: center; */
+    /* border: 1px solid red; */
+    box-shadow: 0 10px 28px rgba(0, 13, 29, 0.25), 0 10px 10px rgba(0,0,0,0.22);
+    border-radius: 0rem 10rem 0rem 10rem;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 .finished{
     text-transform: uppercase;
     padding: 2rem;
+    /* text-align: center; */
     font-size: 2rem;
-    height: 90vh;
-    width: 50%;
-    border: 1px solid red;
+    background-color: #B8FFF9;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+    height: 75%;
+    width: 30%;
+    /* border: 1px solid red; */
+    border-radius: 0rem 10rem 0rem 10rem;
+
 }
 .Add-task form {
     /* border: 2px solid red; */
     /* margin: auto px; */
-    padding: 10rem;
+    padding: 1rem;
 }
 .Add-task form input[type="button"]
 {
@@ -51,11 +93,47 @@ body{
     padding: 1rem;
     border-radius: 12px;
     margin: 10px;
+    border: 0px ;
+}
+.Add-task form input[type="button"]:hover
+{
+    box-shadow: 0 1px 1px rgba(0,0,0,0.25), 0 4px 8px rgba(0,0,0,0.22);
+}
+.icons{
+    /* background-color: red; */
+    cursor: pointer;
+    font-size: 30px;
+    /* margin-top: 5px; */
+    margin-left: 2rem;
+}
+.task{
+    /* height: 3rem; */
+    /* background-color: red; */
+    overflow:hidden ;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1rem;
+}
+.icons:hover{
+    /* background-color: red;
+    c */
+    color: rgb(213, 96, 96);
+    font-weight: 500;
+    font-size: 34px;
 }
 
 .Add-task form input[type="text"]{
-    font-size: 14px;
+    width: 30rem;
+    font-size: 16px;
+    font-weight: 500;
     padding: 1rem;
+    background-color: aliceblue;
     border-radius: 10px;
+    border: none;
+    outline: none;
 }
-/* sir outlined word hata do icon lag jaega */
+.Add-task form input[type="text"]:hover{
+    box-shadow: 0 4px 8px rgba(46, 50, 51, 0.25), 0 1px 1px rgba(118, 168, 181, 0.22);
+}
